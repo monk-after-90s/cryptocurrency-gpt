@@ -69,7 +69,7 @@ import Layout from "../layouts/Layout.astro";
     const cleanedMessage = message.replace(/\?/g, "");
 
     const encodedMessage = encodeURIComponent(cleanedMessage);
-    fetch(`http://localhost:3000/conversation/${encodedMessage}.json`)
+    fetch(`conversation/${encodedMessage}.json`)
       .then((response) => response.json())
       .then((data) => {
         appendOutputToDiv(data[data.length - 1].message);
@@ -78,7 +78,7 @@ import Layout from "../layouts/Layout.astro";
   };
 
   const clearChatHistory = () => {
-    fetch(`http://localhost:3000/conversation/clear.json`);
+    fetch(`conversation/clear.json`);
     while (outputDiv?.firstChild) {
       outputDiv.removeChild(outputDiv.firstChild);
     }
